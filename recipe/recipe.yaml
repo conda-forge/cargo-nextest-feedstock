@@ -1,6 +1,6 @@
 context:
   name: cargo-nextest
-  version: "0.9.78"
+  version: "0.9.88"
 
 package:
   name: ${{ name|lower }}
@@ -8,7 +8,7 @@ package:
 
 source:
   url: https://github.com/nextest-rs/nextest/archive/cargo-nextest-${{ version }}.tar.gz
-  sha256: cab5f307ca28cca63ba577614a41a7d390731571241d0460e005e2b32d5efac6
+  sha256: 77a6029a409f8ab37e5c8bfc31fccc13bc5ea8475ff3309947a5811fdc758ef4
 
 build:
   number: 0
@@ -22,7 +22,7 @@ requirements:
 
 tests:
   - script:
-    - cargo-nextest --help
+      - cargo-nextest --help
 
 about:
   homepage: https://nexte.st/
