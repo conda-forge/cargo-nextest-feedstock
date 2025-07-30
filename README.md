@@ -11,6 +11,8 @@ Summary: A next-generation test runner for Rust
 
 Development: https://github.com/nextest-rs/nextest
 
+Documentation: https://nexte.st/
+
 Cargo Nextest is a next-generation test runner for Rust,
 designed to be fast and efficient.
 It provides advanced features for running and managing tests,
