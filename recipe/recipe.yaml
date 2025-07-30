@@ -11,14 +11,22 @@ source:
   sha256: ab1eca47940231c99069736f765c75330440a14627c11e74ab98c3ef81feefc3
 
 build:
-  number: 0
+  number: 1
+  script:
+    env:
+      CARGO_PROFILE_RELEASE_STRIP: symbols
+      CARGO_PROFILE_RELEASE_LTO: fat
+    content:
+      - cargo auditable install --locked --no-track --bins --root ${{ PREFIX }} --path ./cargo-nextest
+      - cargo-bundle-licenses --format yaml --output ./THIRDPARTY.yml
 
 requirements:
   build:
-    - ${{ compiler('rust') }}
-    - ${{ compiler('c') }}
     - ${{ stdlib('c') }}
+    - ${{ compiler('c') }}
+    - ${{ compiler('rust') }}
     - cargo-bundle-licenses
+    - cargo-auditable
 
 tests:
   - script:
@@ -26,7 +34,7 @@ tests:
 
 about:
   homepage: https://nexte.st/
-  summary: 'A next-generation test runner for Rust'
+  summary: A next-generation test runner for Rust
   description: |
     Cargo Nextest is a next-generation test runner for Rust,
     designed to be fast and efficient.
@@ -36,6 +44,7 @@ about:
   license_file:
     - LICENSE-MIT
     - THIRDPARTY.yml
+  documentation: https://nexte.st/
   repository: https://github.com/nextest-rs/nextest
 
 extra:
